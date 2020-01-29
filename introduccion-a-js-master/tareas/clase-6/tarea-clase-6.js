@@ -12,6 +12,11 @@ document.querySelector('#btnProceso').onclick = function empezarProceso() {
 let cantidadGrupoFamiliar = prompt("cuantos son en tu familia?");
 console.log(cantidadGrupoFamiliar);
 
+const body = document.querySelector('body');
+const divContenedor = document.createElement('div');
+const input = document.createElement('input type="submit" value="Submit"');
+body.appendChild(divContenedor);
+divContenedor.appendChild(input);
 
 }
 
