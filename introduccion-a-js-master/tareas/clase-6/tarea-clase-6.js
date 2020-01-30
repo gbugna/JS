@@ -8,17 +8,32 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 
 
 document.querySelector('#btnProceso').onclick = function empezarProceso() {
-    
-let cantidadGrupoFamiliar = prompt("cuantos son en tu familia?");
-console.log(cantidadGrupoFamiliar);
 
-const body = document.querySelector('body');
-const divContenedor = document.createElement('div');
-const input = document.createElement('input type="submit" value="Submit"');
-body.appendChild(divContenedor);
-divContenedor.appendChild(input);
+    const cantidadGrupoFamiliar = Number(prompt("cuantos son en tu familia?"));
+
+    const body = document.querySelector('body');
+    const divContenedor = document.createElement('div');
+    body.appendChild(divContenedor);
+
+
+    for (let i = 0; i < cantidadGrupoFamiliar; i++) {
+
+        let input = document.createElement('input');
+        let label = document.createElement('label');
+        input.setAttribute("type", "text");
+        input.setAttribute("id", i);
+        divContenedor.appendChild(input);
+        divContenedor.appendChild(label);
+    }
+
+    const btnCalcular = document.createElement('button');
+    const btnLabel = document.createTextNode("calcular");
+    divContenedor.appendChild(btnCalcular);
+    btnCalcular.appendChild(btnLabel);
+
 
 }
+
 
 
 
