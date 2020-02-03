@@ -12,4 +12,14 @@ function probarValidarNombre() {
   );
 }
 
-probarValidarNombre();
+//probarValidarNombre();
+
+function probarValidarCiudad() {
+    console.assert(
+
+        validarCiudad("") === "pone algo mogorto",
+    );
+    
+}
+
+probarValidarCiudad();
