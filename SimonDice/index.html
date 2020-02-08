@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Simon Dice</title>
+
+    <style type="text/css">
+      .cuadro {
+        opacity: 50%;
+      }
+
+      #amarillo {
+        background-color: yellow;
+        height: 200px;
+        width: 400px;
+      }
+      #verde {
+        background-color: green;
+        height: 200px;
+        width: 400px;
+      }
+      #azul {
+        background-color: blue;
+        height: 200px;
+        width: 400px;
+      }
+      #rojo {
+        background-color: red;
+        height: 200px;
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" onclick="resaltarCuadro(['azul','rojo'])">Probar resaltado</button>
+
+    <div id="amarillo" class="cuadro"></div>
+    <div id="rojo" class="cuadro"></div>
+    <div id="azul" class="cuadro"></div>
+    <div id="verde" class="cuadro"></div>
+
+    <script type="text/javascript">
+
+        let cuadrosMaquina = [];
+        let cuadrosUsuario = [];
+
+        let clickCuadro = document.querySelectorAll('[class=cuadro]');
+     //recorro el nodelist para saber cual es el presionado.      
+     for (let cuadro of clickCuadro) {
+
+       cuadro.addEventListener('click', function () {
+        
+        cuadrosUsuario.push(this.id);
+        console.log(cuadrosUsuario);
+        
+        
+       } ) 
+     }
+
+      function resaltarCuadro(cuadros) {
+        for (let i of cuadros) {
+          let cuadroAresaltar = document.querySelector("#" + i);
+            console.log(cuadroAresaltar);
+            cuadroAresaltar.style.transitionDuration = "3s";
+            cuadroAresaltar.style.opacity = "2";
+                          
+        }
+      }
+    </script>
+  </body>
+</html>
