@@ -34,7 +34,7 @@
     </style>
   </head>
   <body>
-    <button type="button" onclick="resaltarCuadro(['azul','rojo'])">Probar resaltado</button>
+    <button type="button" onclick="iniciaJuego()">Iniciar Juego</button>
 
     <div id="amarillo" class="cuadro"></div>
     <div id="rojo" class="cuadro"></div>
@@ -53,21 +53,44 @@
        cuadro.addEventListener('click', function () {
         
         cuadrosUsuario.push(this.id);
+        resaltarCuadro(cuadrosUsuario);
         console.log(cuadrosUsuario);
-        
-        
+       
        } ) 
      }
 
       function resaltarCuadro(cuadros) {
         for (let i of cuadros) {
           let cuadroAresaltar = document.querySelector("#" + i);
-            console.log(cuadroAresaltar);
-            cuadroAresaltar.style.transitionDuration = "3s";
-            cuadroAresaltar.style.opacity = "2";
+            cuadroAresaltar.style.transitionDuration = "1s";
+            cuadroAresaltar.style.opacity = "1";
+            setInterval(() => {
+              
+            cuadroAresaltar.style.transitionDuration = "1s";
+            cuadroAresaltar.style.opacity = "0.3";
+            }, 1000);
                           
         }
       }
+
+      function elijeColor() {
+
+        let colores = ['azul','rojo','verde','amarillo'];
+
+        const colorElegido = colores[Math.floor(Math.random() * colores.length)];
+        cuadrosMaquina.push(colorElegido);
+        console.log(cuadrosMaquina);
+        return cuadrosMaquina;        
+
+      }
+
+      function iniciaJuego() {
+        
+        resaltarCuadro(elijeColor());
+        
+      }
+
+
     </script>
   </body>
 </html>
