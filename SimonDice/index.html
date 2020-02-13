@@ -7,6 +7,14 @@
     <title>Simon Dice</title>
 
     <style type="text/css">
+
+      .contenedor {
+
+        display: flex;
+      }
+
+
+
       .cuadro {
         opacity: 50%;
       }
@@ -16,16 +24,19 @@
         height: 200px;
         width: 400px;
       }
+
       #verde {
         background-color: green;
         height: 200px;
         width: 400px;
       }
+
       #azul {
         background-color: blue;
         height: 200px;
         width: 400px;
       }
+
       #rojo {
         background-color: red;
         height: 200px;
@@ -33,64 +44,55 @@
       }
     </style>
   </head>
+
   <body>
     <button type="button" onclick="iniciaJuego()">Iniciar Juego</button>
 
-    <div id="amarillo" class="cuadro"></div>
-    <div id="rojo" class="cuadro"></div>
-    <div id="azul" class="cuadro"></div>
-    <div id="verde" class="cuadro"></div>
-
+    <div class="contenedor">
+      <div id="amarillo" class="cuadro"></div>
+      <div id="rojo" class="cuadro"></div>
+      <div id="azul" class="cuadro"></div>
+      <div id="verde" class="cuadro"></div>
+    </div>
     <script type="text/javascript">
+      let cuadrosMaquina = [];
+      let cuadrosUsuario = [];
 
-        let cuadrosMaquina = [];
-        let cuadrosUsuario = [];
-
-        let clickCuadro = document.querySelectorAll('[class=cuadro]');
-     //recorro el nodelist para saber cual es el presionado.      
-     for (let cuadro of clickCuadro) {
-
-       cuadro.addEventListener('click', function () {
-        
-        cuadrosUsuario.push(this.id);
-        resaltarCuadro(cuadrosUsuario);
-        console.log(cuadrosUsuario);
-       
-       } ) 
-     }
+      let clickCuadro = document.querySelectorAll("[class=cuadro]");
+      //recorro el nodelist para saber cual es el presionado.
+      for (let cuadro of clickCuadro) {
+        cuadro.addEventListener("click", function() {
+          cuadrosUsuario.push(this.id);
+          resaltarCuadro(cuadrosUsuario);
+          console.log(cuadrosUsuario);
+        });
+      }
 
       function resaltarCuadro(cuadros) {
         for (let i of cuadros) {
           let cuadroAresaltar = document.querySelector("#" + i);
+          cuadroAresaltar.style.transitionDuration = "1s";
+          cuadroAresaltar.style.opacity = "1";
+          setInterval(() => {
             cuadroAresaltar.style.transitionDuration = "1s";
-            cuadroAresaltar.style.opacity = "1";
-            setInterval(() => {
-              
-            cuadroAresaltar.style.transitionDuration = "1s";
-            cuadroAresaltar.style.opacity = "0.3";
-            }, 1000);
-                          
+            cuadroAresaltar.style.opacity = "0.5";
+          }, 1000);
         }
       }
 
       function elijeColor() {
+        let colores = ["azul", "rojo", "verde", "amarillo"];
 
-        let colores = ['azul','rojo','verde','amarillo'];
-
-        const colorElegido = colores[Math.floor(Math.random() * colores.length)];
+        const colorElegido =
+          colores[Math.floor(Math.random() * colores.length)];
         cuadrosMaquina.push(colorElegido);
         console.log(cuadrosMaquina);
-        return cuadrosMaquina;        
-
+        return cuadrosMaquina;
       }
 
       function iniciaJuego() {
-        
         resaltarCuadro(elijeColor());
-        
       }
-
-
     </script>
   </body>
 </html>
