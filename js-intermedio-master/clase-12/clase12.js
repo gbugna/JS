@@ -9,6 +9,9 @@ let consultaDefault = "https://api.exchangeratesapi.io/latest";
 consultarDivisas(consultaDefault);
 
 datePicker.addEventListener("change", event => {
+ 
+  limpiarLista();
+  
   let fecha = event.target.value;
   consultarDivisas("https://api.exchangeratesapi.io/" + fecha);
 });
@@ -21,14 +24,28 @@ function consultarDivisas(consulta) {
 
       Object.entries(respuestaJSON.rates).forEach(([moneda, valor]) => {
         let itemLista = document.createElement("li");
-        itemLista.classList.add("list-group-item");
-        itemLista.classList.add("list-group-flush");
+        //itemLista.classList.add("list-group-item");
+       // itemLista.classList.add("list-group-flush");
         lista.appendChild(itemLista);
 
         let values = document.createTextNode(moneda + valor);
 
         itemLista.appendChild(values);
       });
+
+      
+      
+
     })
     .catch(error => console.error("FALLÓ", error));
+}
+
+
+function limpiarLista() {
+
+  if (lista.childNodes.length > 0 ) {
+    
+    lista.innerHTML="";
+  }
+  
 }

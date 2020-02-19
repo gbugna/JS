@@ -1,11 +1,36 @@
-.rojo{
-    color: red;
+body {
+    
+    background-color: #A288A6;
 }
 
-.grande{
-    font-size: 2em;
+.card {
+    border: none;
 }
 
-.muy-grande{
-    font-size: 3em;
+.card-body {
+    background-color: #68576A;
 }
+
+.card-header {
+    background-color:#BB9BB0;
+}
+
+h2 {
+    color: #297373;
+}
+
+.contenedorDivisas {
+    column-count: 3;
+    justify-content: center;
+  }
+
+  .container {
+
+    display: flex;
+    justify-content: center;
+  }
+
+li {
+    list-style-type:none;
+}
+
