@@ -1,6 +1,6 @@
 //fetch API: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 //usa promesas
-const encabezado = document.querySelector("h2");
+const monedaBase = document.querySelector("#monedaBase");
 const lista = document.querySelector("#lista");
 const datePicker = document.querySelector("#datePicker");
 
@@ -20,7 +20,7 @@ function consultarDivisas(consulta) {
   fetch(consulta)
     .then(respuesta => respuesta.json())
     .then(respuestaJSON => {
-      encabezado.textContent = respuestaJSON.base;
+      monedaBase.textContent = respuestaJSON.base;
 
       Object.entries(respuestaJSON.rates).forEach(([moneda, valor]) => {
         let itemLista = document.createElement("li");
