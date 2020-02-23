@@ -20,9 +20,17 @@ h2 {
 }
 
 .contenedorDivisas {
-    column-count: 3;
+    column-count: 2;
     justify-content: center;
   }
+
+.listaCotizacion {
+    column-count: 2;
+    justify-content: center;
+}
+
+
+
 
   .container {
 
