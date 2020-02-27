@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+    traerCenso();
+
+    function traerCenso() {
+  fetch('data.json')
+    .then(respuesta => respuesta.json())
+    .then(censo => {
+
+     // Object.entries(respuestaJSON.rates).forEach(([moneda]) => {
+     
+     // });
+
+        ;
+        
+
+        const resumen = censo.data.censo.resumen;
+
+        console.log(resumen);
+        
+
+             Object.keys(resumen).forEach(element => {
+
+                Object.keys(element).forEach(TotalCamas => {
+
+                    
+                })
+                
+            
+            
+        });
+        
+
+    })
+    .catch(error => console.error("FALLÓ", error));
+}
+</script>
+
+</body>
+</html>
