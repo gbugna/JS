@@ -14,3 +14,5 @@ export function traerPokemon(id) {
       
       
   }
+
+  
