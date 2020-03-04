@@ -1,2 +1,8 @@
-import { traerPokemon, saludo } from './consultas.js';
-export {traerPokemon, saludo};
+import { traerPokemonIndividual, traerPokemones } from './consultas.js';
+
+const divMuestraPokemon = document.querySelector('#DivMuestraPokemon');
+
+
+traerPokemones();
+divMuestraPokemon.textContent = consulta;
+

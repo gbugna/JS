@@ -1,7 +1,7 @@
 const linkAPI = 'https://pokeapi.co/api/v2/pokemon/';
 
-export function traerPokemon(id) {
-    fetch('https://pokeapi.co/api/v2/pokemon/' + id)
+export function traerPokemonIndividual(id) {
+  return fetch('https://pokeapi.co/api/v2/pokemon/' + id)
       .then(respuesta => respuesta.json())
       .then(respuestaJSON => { 
         console.log(respuestaJSON) 
@@ -9,8 +9,21 @@ export function traerPokemon(id) {
     }).catch(error => console.error("FALLÓ", error));
   }
 
-  export function saludo(params) {
-      console.log(params);
+  export function traerPokemones() {
+    return fetch(linkAPI)
+    .then(respuesta => respuesta.json())
+    .then(respuestaJSON => { 
+
+
+     Object.keys(respuestaJSON).forEach( item => {
+
+     console.log(respuestaJSON.name);
+      
+
+     });
+      
+  
+  }).catch(error => console.error("FALLÓ", error));
       
       
   }
