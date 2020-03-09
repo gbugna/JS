@@ -1,8 +1,12 @@
-import { traerPokemonIndividual, traerPokemones } from './consultas.js';
+import {
+  traerPokemonIndividual,
+  traerPokemones,
+  linkAPI,
+  nextLink
+} from "./consultas.js";
 
-const divMuestraPokemon = document.querySelector('#DivMuestraPokemon');
+import { MostrarPokemon } from "./ui.js";
 
+const divMuestraPokemon = document.querySelector("#DivMuestraPokemon");
 
-consulta = traerPokemones();
-divMuestraPokemon.textContent = consulta;
-
+MostrarPokemon(traerPokemones("https://pokeapi.co/api/v2/pokemon/"));
