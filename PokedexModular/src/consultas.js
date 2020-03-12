@@ -4,9 +4,7 @@ export const nextLink = "https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20";
 export function traerPokemonIndividual(id) {
   return fetch("https://pokeapi.co/api/v2/pokemon/" + id)
     .then(respuesta => respuesta.json())
-    .then(respuestaJSON => {
-      console.log(respuestaJSON);
-    })
+    .then(respuestaJSON => {})
     .catch(error => console.error("FALLÓ", error));
 }
 

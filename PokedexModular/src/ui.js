@@ -1,3 +1,4 @@
-export function MostrarPokemon(name) {
-  console.log(name.results);
+export async function MostrarPokemon(response) {
+  let pokemon = await response;
+  console.log(pokemon.count);
 }
