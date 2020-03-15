@@ -1,0 +1,18 @@
+header {
+}
+
+body {
+  background-color: dimgray;
+}
+
+#DivMuestraPokemon {
+  display: flex;
+}
+
+.divPokemon {
+  margin: 2px;
+  padding: 2px;
+  background-color: azure;
+  height: 75px;
+  width: 100px;
+}

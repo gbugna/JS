@@ -5,8 +5,8 @@ import {
   nextLink
 } from "./consultas.js";
 
-import { MostrarPokemon } from "./ui.js";
+import { generarPokemones } from "./ui.js";
 
 const divMuestraPokemon = document.querySelector("#DivMuestraPokemon");
 
-MostrarPokemon(traerPokemones("https://pokeapi.co/api/v2/pokemon/"));
+generarPokemones(traerPokemones(linkAPI));

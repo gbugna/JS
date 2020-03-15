@@ -8,8 +8,8 @@ export function traerPokemonIndividual(id) {
     .catch(error => console.error("FALLÓ", error));
 }
 
-export async function traerPokemones(consulta) {
-  const respuesta = await fetch(consulta);
+export async function traerPokemones(linkConsulta) {
+  const respuesta = await fetch(linkConsulta);
   const json = await respuesta.json();
   return json;
 }
