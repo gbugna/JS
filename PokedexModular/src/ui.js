@@ -1,3 +1,5 @@
+import { traerPokemones } from "./consultas.js";
+
 export async function generarPokemones(response) {
   let pokemon = await response;
   mostrarNextPage(pokemon.next);
@@ -22,19 +24,11 @@ function mostrarPokemones(listaPokemones) {
       divPokemon.appendChild(etiquetaPokemon);
       divPokemon.classList.add("divPokemon");
       $divInicio.appendChild(divPokemon);
+      // console.log(pokemon.url);
 
-      // mostrarDetallesPokemon(pokemon.url);
+      console.log(traerPokemones(pokemon.url));
     }
   }
 }
 
-function mostrarDetallesPokemon(detallesPokemon) {
-  for (const key in detallesPokemon) {
-    if (detallesPokemon.hasOwnProperty(key)) {
-      const datosPokemon = detallesPokemon[key];
-
-      console.log(datosPokemon.height);
-      console.log(datosPokemon.weight);
-    }
-  }
-}
+function mostrarDetallesPokemon(obj) {}
