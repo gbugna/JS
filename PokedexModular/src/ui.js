@@ -13,22 +13,29 @@ function mostrarNextPage(link) {
 function mostrarPokemones(listaPokemones) {
   const $divInicio = document.querySelector("#DivMuestraPokemon");
 
+  //console.log(listaPokemones);
+
   for (const key in listaPokemones) {
     if (listaPokemones.hasOwnProperty(key)) {
       const pokemon = listaPokemones[key];
 
-      let divPokemon = document.createElement("div");
+      var divPokemon = document.createElement("div");
       let etiquetaPokemon = document.createElement("label");
       let nombrePokemon = document.createTextNode(pokemon.name);
       etiquetaPokemon.appendChild(nombrePokemon);
       divPokemon.appendChild(etiquetaPokemon);
       divPokemon.classList.add("divPokemon");
       $divInicio.appendChild(divPokemon);
-      // console.log(pokemon.url);
 
-      console.log(traerPokemones(pokemon.url));
+      mostrarDetallesPokemon(traerPokemones(pokemon.url));
     }
   }
 }
 
-function mostrarDetallesPokemon(obj) {}
+async function mostrarDetallesPokemon(obj) {
+  let detallePokemon = await obj;
+  let $pokemonHeightLabel = document.createElement("label");
+  let $pokemonHeight = document.createTextNode(detallePokemon.height);
+  $pokemonHeightLabel.appendChild($pokemonHeight);
+  divPokemon.appendChild($pokemonHeightLabel);
+}
