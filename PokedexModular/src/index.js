@@ -1,12 +1,5 @@
-import {
-  traerPokemonIndividual,
-  traerPokemones,
-  linkAPI,
-  nextLink
-} from "./consultas.js";
+import { getPokemonData, linkAPI, nextLink } from "./consultas.js";
 
-import { generarPokemones } from "./ui.js";
+import { createHomePage } from "./ui.js";
 
-const divMuestraPokemon = document.querySelector("#DivMuestraPokemon");
-
-generarPokemones(traerPokemones(linkAPI));
+createHomePage(getPokemonData(linkAPI));

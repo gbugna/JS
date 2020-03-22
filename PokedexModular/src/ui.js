@@ -1,41 +1,45 @@
-import { traerPokemones } from "./consultas.js";
+import { getPokemonData } from "./consultas.js";
 
-export async function generarPokemones(response) {
+export async function createHomePage(response) {
   let pokemon = await response;
-  mostrarNextPage(pokemon.next);
-  mostrarPokemones(pokemon.results);
+  createNextPage(pokemon.next);
+  createPokemonMosaic(pokemon.results);
 }
 
-function mostrarNextPage(link) {
+function createNextPage(link) {
   console.log(link);
 }
 
-function mostrarPokemones(listaPokemones) {
-  const $divInicio = document.querySelector("#DivMuestraPokemon");
+function createPokemonMosaic(pokemonMosaicList) {
+  const $divInicio = document.querySelector("#pokemonMosaicDiv");
 
-  //console.log(listaPokemones);
+  for (const key in pokemonMosaicList) {
+    if (pokemonMosaicList.hasOwnProperty(key)) {
+      const pokemon = pokemonMosaicList[key];
 
-  for (const key in listaPokemones) {
-    if (listaPokemones.hasOwnProperty(key)) {
-      const pokemon = listaPokemones[key];
-
-      var divPokemon = document.createElement("div");
+      let divPokemon = document.createElement("div");
       let etiquetaPokemon = document.createElement("label");
       let nombrePokemon = document.createTextNode(pokemon.name);
       etiquetaPokemon.appendChild(nombrePokemon);
       divPokemon.appendChild(etiquetaPokemon);
-      divPokemon.classList.add("divPokemon");
+      divPokemon.classList.add(pokemon.name, "divPokemon");
       $divInicio.appendChild(divPokemon);
 
-      mostrarDetallesPokemon(traerPokemones(pokemon.url));
+      createPokemonSpecs(getPokemonData(pokemon.url));
     }
   }
 }
 
-async function mostrarDetallesPokemon(obj) {
-  let detallePokemon = await obj;
+async function createPokemonSpecs(obj) {
+  let pokemonSpecs = await obj;
+  let divPokemonSpecs = document.querySelector("." + pokemonSpecs.name);
+  //(pokemonSpecs.sprites.back_default);
+  let $pokemonImage = document.createElement("img");
+  $pokemonImage.classList.add("pokemonImage");
+  $pokemonImage.src = pokemonSpecs.sprites.back_default;
   let $pokemonHeightLabel = document.createElement("label");
-  let $pokemonHeight = document.createTextNode(detallePokemon.height);
-  $pokemonHeightLabel.appendChild($pokemonHeight);
-  divPokemon.appendChild($pokemonHeightLabel);
+  let pokemonHeight = document.createTextNode("Height: " + pokemonSpecs.height);
+  $pokemonHeightLabel.appendChild(pokemonHeight);
+  divPokemonSpecs.appendChild($pokemonImage);
+  divPokemonSpecs.appendChild($pokemonHeightLabel);
 }
