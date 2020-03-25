@@ -1,5 +1,14 @@
 body {
-  background-color: dimgray;
+  background-color: #ace4aa;
+}
+
+header {
+  margin: auto;
+}
+
+.container {
+  max-width: 75%;
+  margin: auto;
 }
 
 #pokemonMosaicDiv {
@@ -11,12 +20,37 @@ body {
 }
 
 .divPokemon {
+  font-family: "Baloo Da 2", cursive;
   margin: 2px;
   padding: 2px;
   background-color: azure;
   height: 200px;
   width: 230px;
-  border-radius: 5px;
+  border-radius: 15px;
+}
+
+.divPokemonImg {
+  width: fit-content;
+  height: auto;
+  margin: auto;
+}
+
+.divPokemonSpecs {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.pokemonName {
+  font-size: x-large;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.pokemonHeight {
+}
+
+.pokemonImage {
+  margin: auto;
 }
 
 .normal {
