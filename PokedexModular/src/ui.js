@@ -36,7 +36,7 @@ async function createPokemonSpecs(obj) {
   let $pokemonImage = document.createElement("img");
   let $pokemonHeightLabel = document.createElement("label");
   let $pokemonWeightLabel = document.createElement("label");
-  divPokemonMain.classList.add(pokemonSpecs.types[0].type.name);
+  $divPokemonSpecs.classList.add(pokemonSpecs.types[0].type.name);
   $divPokemonSpecs.classList.add("divPokemonSpecs");
   $pokemonNameLabel.append(pokemonSpecs.name);
   $pokemonWeightLabel.append("Peso: " + pokemonSpecs.weight + "0 grs");
