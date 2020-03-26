@@ -1,5 +1,5 @@
 body {
-  background-color: #ace4aa;
+  background: #084888;
 }
 
 header {
@@ -20,14 +20,22 @@ header {
 }
 
 .divPokemon {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  /*grid-template-columns: repeat(3, 1fr);*/
   font-family: "Baloo Da 2", cursive;
   margin: 2px;
   padding: 2px;
   background-color: azure;
   height: 200px;
   width: 300px;
-  border-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
   background: lightcyan;
+}
+
+.divPokemonId {
+  text-orientation: upright;
 }
 
 .divPokemonImg {
@@ -50,10 +58,10 @@ header {
 .pokemonHeight {
 }
 
-.pokemonImage {
-  margin: auto;
+.pokemonWeight {
 }
 
+/*background colors*/
 .normal {
   background: #aca981;
 }

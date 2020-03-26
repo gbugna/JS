@@ -29,6 +29,7 @@ function createPokemonMosaic(pokemonMosaicList) {
 async function createPokemonSpecs(obj) {
   let pokemonSpecs = await obj;
   let divPokemonMain = document.querySelector("." + pokemonSpecs.name);
+  let $divPokemonId = document.createElement("div");
   let $divPokemonImg = document.createElement("div");
   let $divPokemonSpecs = document.createElement("div");
   let $br = document.createElement("br");
@@ -36,8 +37,10 @@ async function createPokemonSpecs(obj) {
   let $pokemonImage = document.createElement("img");
   let $pokemonHeightLabel = document.createElement("label");
   let $pokemonWeightLabel = document.createElement("label");
-  $divPokemonSpecs.classList.add(pokemonSpecs.types[0].type.name);
+  $divPokemonId.classList.add(pokemonSpecs.types[0].type.name);
   $divPokemonSpecs.classList.add("divPokemonSpecs");
+  $divPokemonId.append("#");
+  $divPokemonId.append(("000" + pokemonSpecs.id).slice(-3));
   $pokemonNameLabel.append(pokemonSpecs.name);
   $pokemonWeightLabel.append("Peso: " + pokemonSpecs.weight + "0 grs");
   $pokemonHeightLabel.append("Altura: " + pokemonSpecs.height + "0 cm");
@@ -45,7 +48,7 @@ async function createPokemonSpecs(obj) {
   $divPokemonImg.classList.add("divPokemonImg");
   $pokemonImage.src = pokemonSpecs.sprites.back_default;
   $pokemonHeightLabel.classList.add("pokemonHeight");
-  divPokemonMain.append($divPokemonImg, $divPokemonSpecs);
+  divPokemonMain.append($divPokemonId, $divPokemonImg, $divPokemonSpecs);
   $divPokemonImg.appendChild($pokemonImage);
   $divPokemonSpecs.append(
     $pokemonNameLabel,
@@ -54,5 +57,5 @@ async function createPokemonSpecs(obj) {
   );
   console.log(pokemonSpecs.types[0].type.name);
   console.log(pokemonSpecs.types[1].type.name);
-  console.log("--------------------------");
+  console.log("---------------------------");
 }
