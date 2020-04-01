@@ -1,9 +1,20 @@
 body {
-  background: #084888;
+  background: #595a5a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-  margin: auto;
+  height: 100px;
+}
+
+header h1 {
+  display: inline;
+  font-size: xx-large;
 }
 
 .container {
@@ -11,7 +22,7 @@ header {
   margin: auto;
 }
 
-#pokemonMosaicDiv {
+#pokemon-mosaic-div {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -19,46 +30,59 @@ header {
   /* justify-content: space-evenly;*/
 }
 
-.divPokemon {
+.div-pokemon {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
   /*grid-template-columns: repeat(3, 1fr);*/
   font-family: "Baloo Da 2", cursive;
-  margin: 2px;
-  padding: 2px;
+  margin: 10px;
   background-color: azure;
   height: 200px;
   width: 300px;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 15px;
   background: lightcyan;
+  cursor: pointer;
 }
 
-.divPokemonId {
+.div-pokemon:hover {
+  color: #6b3af8;
+}
+
+.div-pokemon-id {
   text-orientation: upright;
 }
 
-.divPokemonImg {
+.div-pokemon-img {
   width: fit-content;
   height: auto;
   margin: auto;
 }
 
-.divPokemonSpecs {
+.div-pokemon-specs {
   display: grid;
   grid-template-columns: auto;
 }
 
-.pokemonName {
+.pokemon-name {
   font-size: x-large;
   font-weight: bold;
   text-transform: capitalize;
 }
 
-.pokemonHeight {
+.pokemon-label-id {
+  position: relative;
+  transform: rotate(-90deg);
+  top: 40%;
+  color: white;
+  font-size: xx-large;
+  margin-left: -10%;
 }
 
-.pokemonWeight {
+.pokemon-height {
+}
+
+.pokemon-weight {
 }
 
 /*background colors*/

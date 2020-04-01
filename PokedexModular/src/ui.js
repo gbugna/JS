@@ -11,14 +11,14 @@ function createNextPage(link) {
 }
 
 function createPokemonMosaic(pokemonMosaicList) {
-  const $divInicio = document.querySelector("#pokemonMosaicDiv");
+  const $divInicio = document.querySelector("#pokemon-mosaic-div");
 
   for (const key in pokemonMosaicList) {
     if (pokemonMosaicList.hasOwnProperty(key)) {
       const pokemon = pokemonMosaicList[key];
 
       let divPokemon = document.createElement("div");
-      divPokemon.classList.add(pokemon.name, "divPokemon");
+      divPokemon.classList.add(pokemon.name, "div-pokemon");
       $divInicio.appendChild(divPokemon);
 
       createPokemonSpecs(getPokemonData(pokemon.url));
@@ -30,6 +30,7 @@ async function createPokemonSpecs(obj) {
   let pokemonSpecs = await obj;
   let divPokemonMain = document.querySelector("." + pokemonSpecs.name);
   let $divPokemonId = document.createElement("div");
+  let $pokemonId = document.createElement("label");
   let $divPokemonImg = document.createElement("div");
   let $divPokemonSpecs = document.createElement("div");
   let $br = document.createElement("br");
@@ -38,16 +39,16 @@ async function createPokemonSpecs(obj) {
   let $pokemonHeightLabel = document.createElement("label");
   let $pokemonWeightLabel = document.createElement("label");
   $divPokemonId.classList.add(pokemonSpecs.types[0].type.name);
-  $divPokemonSpecs.classList.add("divPokemonSpecs");
-  $divPokemonId.append("#");
-  $divPokemonId.append(("000" + pokemonSpecs.id).slice(-3));
+  $divPokemonSpecs.classList.add("div-pokemon-specs");
+  $pokemonId.append("#", ("000" + pokemonSpecs.id).slice(-3));
+  $pokemonId.classList.add("pokemon-label-id");
   $pokemonNameLabel.append(pokemonSpecs.name);
   $pokemonWeightLabel.append("Peso: " + pokemonSpecs.weight + "0 grs");
   $pokemonHeightLabel.append("Altura: " + pokemonSpecs.height + "0 cm");
-  $pokemonNameLabel.classList.add("pokemonName");
-  $divPokemonImg.classList.add("divPokemonImg");
+  $pokemonNameLabel.classList.add("pokemon-name");
+  $divPokemonImg.classList.add("div-pokemon-img");
   $pokemonImage.src = pokemonSpecs.sprites.back_default;
-  $pokemonHeightLabel.classList.add("pokemonHeight");
+  $pokemonHeightLabel.classList.add("pokemon-height");
   divPokemonMain.append($divPokemonId, $divPokemonImg, $divPokemonSpecs);
   $divPokemonImg.appendChild($pokemonImage);
   $divPokemonSpecs.append(
