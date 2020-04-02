@@ -38,10 +38,14 @@ async function createPokemonSpecs(obj) {
   let $pokemonImage = document.createElement("img");
   let $pokemonHeightLabel = document.createElement("label");
   let $pokemonWeightLabel = document.createElement("label");
-  $divPokemonId.classList.add(pokemonSpecs.types[0].type.name);
+  $divPokemonId.classList.add(
+    pokemonSpecs.types[0].type.name,
+    "pokemon-div-id"
+  );
   $divPokemonSpecs.classList.add("div-pokemon-specs");
   $pokemonId.append("#", ("000" + pokemonSpecs.id).slice(-3));
   $pokemonId.classList.add("pokemon-label-id");
+  $divPokemonId.appendChild($pokemonId);
   $pokemonNameLabel.append(pokemonSpecs.name);
   $pokemonWeightLabel.append("Peso: " + pokemonSpecs.weight + "0 grs");
   $pokemonHeightLabel.append("Altura: " + pokemonSpecs.height + "0 cm");

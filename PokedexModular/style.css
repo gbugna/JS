@@ -37,7 +37,7 @@ header h1 {
   font-family: "Baloo Da 2", cursive;
   margin: 10px;
   background-color: azure;
-  height: 200px;
+  height: 170px;
   width: 300px;
   border-bottom-right-radius: 15px;
   border-top-right-radius: 15px;
@@ -69,9 +69,11 @@ header h1 {
   font-weight: bold;
   text-transform: capitalize;
 }
-
-.pokemon-label-id {
+.pokemon-div-id {
   position: relative;
+}
+.pokemon-label-id {
+  position: absolute;
   transform: rotate(-90deg);
   top: 40%;
   color: white;
