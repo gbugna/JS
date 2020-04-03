@@ -9,17 +9,34 @@ body {
 }
 
 header {
-  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+
+  font-family: "Exo 2", sans-serif;
+}
+
+.curve {
+ 
+  background: url(./wave.svg) no-repeat;
+  
+}
 }
 
 header h1 {
-  display: inline;
+  margin-right: 6px;
   font-size: xx-large;
+  color: #0c1481;
+}
+
+header h2 {
+  color: #705a98;
 }
 
 .container {
-  max-width: 75%;
-  margin: auto;
+  display: flex;
+  justify-content: center;
 }
 
 #pokemon-mosaic-div {
