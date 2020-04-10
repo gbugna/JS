@@ -1,0 +1,16 @@
+$header-color: #0000;
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+
+  font-family: "Exo 2", sans-serif;
+
+  h1 {
+    margin-right: 6px;
+    font-size: xx-large;
+    color: #0c1481;
+  }
+}

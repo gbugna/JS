@@ -18,10 +18,7 @@ header {
 }
 
 .curve {
- 
   background: url(./wave.svg) no-repeat;
-  
-}
 }
 
 header h1 {
@@ -50,7 +47,7 @@ header h2 {
 .div-pokemon {
   display: grid;
   grid-template-columns: 1fr 2fr 2fr;
-  /*grid-template-columns: repeat(3, 1fr);*/
+
   font-family: "Baloo Da 2", cursive;
   margin: 10px;
   background-color: azure;

@@ -2,12 +2,17 @@ import { getPokemonData } from "./consultas.js";
 
 export async function createHomePage(response) {
   let pokemon = await response;
-  createNextPage(pokemon.next);
+  createNextPageButton(pokemon.next);
   createPokemonMosaic(pokemon.results);
 }
 
-function createNextPage(link) {
-  console.log(link);
+function createNextPageButton(linkNextPage) {
+  let $divContainer = document.querySelector(".container");
+  let $botonNextPage = document.createElement("button");
+
+  $botonNextPage.setAttribute("id", "boton-next-page");
+  $botonNextPage.textContent = ">";
+  $divContainer.appendChild($botonNextPage);
 }
 
 function createPokemonMosaic(pokemonMosaicList) {
@@ -60,7 +65,7 @@ async function createPokemonSpecs(obj) {
     $pokemonHeightLabel,
     $pokemonWeightLabel
   );
-  console.log(pokemonSpecs.types[0].type.name);
-  console.log(pokemonSpecs.types[1].type.name);
-  console.log("---------------------------");
+  // console.log(pokemonSpecs.types[0].type.name);
+  // console.log(pokemonSpecs.types[1].type.name);
+  // console.log("---------------------------");
 }
