@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Baloo+Da+2&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
     <title>Pokedex Modular</title>
 </head>
 
 <body>
     <header>
-        <div class="curve">1</div>
         <h1>POKEDEX</h1>
         <h2>powered by</h2>
         <img src="./pokeapi_256.png" alt="pokeapi_logo">
+        <div class="div-counter-search">
+            <div class="div-total-pokemon"></div>
+            <div class="div-search">
+                <input type="search" name="search" id="input-search">
+                <div class="search-icon"><i data-feather="search"></i></div>
 
-
+            </div>
+        </div>
     </header>
 
     <div class="container">
@@ -25,6 +31,9 @@
 
     </div>
     <script type="module" src="./src/index.js"></script>
+    <script>
+        feather.replace();
+    </script>
 </body>
 
 </html>

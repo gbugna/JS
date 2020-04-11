@@ -2,7 +2,8 @@ import { getPokemonData } from "./consultas.js";
 
 export async function createHomePage(response) {
   let pokemon = await response;
-  createNextPageButton(pokemon.next);
+  // createNextPageButton(pokemon.next);
+  setTotalPokemon(pokemon.count);
   createPokemonMosaic(pokemon.results);
 }
 
@@ -13,6 +14,12 @@ function createNextPageButton(linkNextPage) {
   $botonNextPage.setAttribute("id", "boton-next-page");
   $botonNextPage.textContent = ">";
   $divContainer.appendChild($botonNextPage);
+}
+
+function setTotalPokemon(url) {
+  const $divTotalPokemon = document.querySelector(".div-total-pokemon");
+
+  $divTotalPokemon.textContent = `Total Pokemons: ${url}`;
 }
 
 function createPokemonMosaic(pokemonMosaicList) {

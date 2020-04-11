@@ -1,5 +1,5 @@
-import { getPokemonData, linkAPI, nextLink } from "./consultas.js";
+import { getPokemonData, apiLink } from "./consultas.js";
 
 import { createHomePage } from "./ui.js";
 
-createHomePage(getPokemonData(linkAPI));
+createHomePage(getPokemonData(apiLink));
