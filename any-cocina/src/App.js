@@ -1,13 +1,16 @@
 import React from "react";
 import "./App.css";
+import { useUser } from "./session/hooks";
 
 function App() {
+  const user = useUser();
+
   return (
     <div className="App">
-      <header className="App"></header>
-      <h4>Any Cocina</h4>
-      <input type="text" />
-      <input type="password" name="" id="" />
+      <header className="App">
+        <h4>Any Cocina</h4>
+        Bienvenido: {user.displayName} - {user.email}
+      </header>
     </div>
   );
 }
