@@ -11,7 +11,8 @@
 }
 
 .App {
-  background-color: #f276bc;
+  background: rgb(2,0,36);
+  background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(121,9,98,1) 36%, rgba(255,0,249,1) 91%);
   height: 50vh;
   display: flex;
   flex-direction: column;
