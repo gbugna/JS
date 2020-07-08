@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+
+    <canvas id = "chart" width="500"></canvas>
+
+
+
+    <script>
+
+createChart();
+
+
+async function createChart(params) {
+
+const ctx = document.getElementById('chart').getContext('2d');
+const years = [];
+const temps = [];
+await getData();
+
+const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: years,
+        datasets: [{
+            label: '# of Votes',
+            data: temps,
+            fill : false,
+            backgroundColor: 
+                'rgba(255, 99, 132, 0.7)'
+            ,
+            borderColor: 
+                'rgba(255, 99, 132, 1)'
+            ,
+            borderWidth: 0
+        }]
+    },
+            options: {
+              
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: false
+                        }
+                    }]
+                    
+                }
+            }
+        });
+
+
+      // https://data.giss.nasa.gov/gistemp
+
+      getData();
+
+      async function getData() {
+        const response = await fetch("ZonAnn.Ts+dSST.csv");
+        const data = await response.text();
+        const table = data.split("\n").slice(1);
+        table.forEach((row) => {
+          const columns = row.split(",");
+          const year = columns[0];
+          years.push(year);
+          const temp = columns[1];
+          temps.push(parseFloat(temp) +14 );
+          console.log(years);
+        });
+      }
+
+
+
+}
+
+
+
+
+
+
+
+</script>
+  </body>
+</html>

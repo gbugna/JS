@@ -19,10 +19,9 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App">
-        <h4>Any Cocina</h4>
+        <h4 className="text-4xl">Any Cocina</h4>
         {/* Bienvenido: {user.displayName} - {user.email} */}
-      </header>
+
 
       {recipes.map((recipes) => (
         <Recipe

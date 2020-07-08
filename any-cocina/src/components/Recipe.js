@@ -1,13 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom";
 
 function Recipe(props) {
-  
-  return ( 
-    <div>
-  <label>{props.titulo}</label> <label>{props.valoracion}</label> <label>{props.categoria}</label>
+  return (
+    <div className="card black-text">
+      <div className="">{props.titulo}</div>
+      <div className="">
+        <span className="">#{props.categoria}</span>
+      </div>
+      <td></td> <td>{props.valoracion}</td>
+    </div>
+  );
+}
 
-  </div>
-  );}
-
-  export default Recipe;
+export default Recipe;

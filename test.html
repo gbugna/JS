@@ -1,0 +1,59 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Coding Train: Data/APIs 1</title>
+  </head>
+  <body>
+    <h1>Fetch a Rainbow</h1>
+    <img src="" id="rainbow" width="480" />
+    <script>
+      console.log('about to fetch a rainbow');
+
+      catchRainbow()
+       
+      async function catchRainbow() {
+        const response = await fetch('taza_beta.jpg');
+        const blob = await response.blob();
+        document.getElementById('rainbow').src = URL.createObjectURL(blob);
+      }
+    </script>
+  </body>
+</html>
+ -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+<img src="" id="image" alt="" width="480">
+
+<script>
+
+
+agregarImagen();
+
+async function agregarImagen () {
+
+const response =  await fetch('taza_beta.jpg');
+let pic = await response.blob();
+let imageContainer = document.querySelector('#image');
+imageContainer.src = URL.createObjectURL(pic);
+
+}
+
+</script>
+</body>
+</html>
