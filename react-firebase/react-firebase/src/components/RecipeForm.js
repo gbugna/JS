@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { db } from "../firebase";
 
 const RecipeForm = (props) => {
   const initialStateValues = {
@@ -20,6 +21,19 @@ const RecipeForm = (props) => {
     props.addEditRecipe(values);
     setValues({ ...initialStateValues });
   };
+
+  const getRecipeById = async (id) => {
+    const doc = await db.collection("recipeList").doc(id).get();
+    setValues({ ...doc.data() });
+  };
+
+  useEffect(() => {
+    if (props.currentId === "") {
+      setValues({ ...initialStateValues });
+    } else {
+      getRecipeById(props.currentId);
+    }
+  }, [props.currentId]);
 
   return (
     <div className="flex flex-wrap">
@@ -67,9 +81,9 @@ const RecipeForm = (props) => {
 
         <button
           type="submit"
-          className="bg-orange-500 hover:bg-orange-400 text-white font-bold py-2 px-4 border-b-4 border-orange-700 hover:border-orange-500 rounded"
+          className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
         >
-          Guardar
+          {props.currentId === "" ? "Guardar" : "Editar"}
         </button>
       </form>
     </div>
