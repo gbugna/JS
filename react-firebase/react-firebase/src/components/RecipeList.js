@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RecipeForm from "./RecipeForm";
-
+import Salty from './img/salty.jpg'
+import Sweet from './img/sweet.jpg'
 import { db } from "../firebase";
 
 const RecipeList = () => {
@@ -10,15 +11,14 @@ const RecipeList = () => {
   const addEditRecipe = async (recipe) => {
     //console.log(recipe);
 
-    if (currentId === '') {
-      
+    if (currentId === "") {
       await db.collection("recipeList").doc().set(recipe);
       console.log("Receta Guardada");
-    }else{
-
+    } else {
       await db.collection("recipeList").doc(currentId).update(recipe);
+      setCurrentId("");
     }
-   
+
     getRecipeList();
   };
 
@@ -44,11 +44,26 @@ const RecipeList = () => {
 
   return (
     <div>
-      <RecipeForm {...{addEditRecipe, currentId, list}} />
-      <h1>Recetas</h1>
+      <RecipeForm {...{ addEditRecipe, currentId, list }} />
+
       {list.map((list) => (
-        <li key={list.id}>
-          {list.recipeName} {list.category}{" "}
+        <div key={list.id} className="flex flex-wrap max-w-sm rounded-lg overflow-hidden shadow-lg m-5 p-5">
+          <img
+            className="w-full"
+            src={list.category == "Salado" ? Salty : Sweet}
+            alt="Sunset in the mountains"
+          ></img>
+          <div className="px-6 py-4">
+            <div className="text-red-700 font-bold text-xl mb-2">{list.recipeName}</div>
+            <p className="text-gray-700 text-base">
+              {list.method}
+            </p>
+          </div>
+          <div className="px-6 py-4">
+            <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+              #{list.category}
+            </span>
+          </div>
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             onClick={() => setCurrentId(list.id)}
@@ -61,7 +76,7 @@ const RecipeList = () => {
           >
             eliminar
           </button>
-        </li>
+        </div>
       ))}
     </div>
   );
