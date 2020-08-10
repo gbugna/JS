@@ -44,7 +44,7 @@ const RecipeList = () => {
 
   return (
     <div>
-      <RecipeForm {...{ addEditRecipe, currentId, list }} />
+      {/* <RecipeForm {...{ addEditRecipe, currentId, list }} /> */}
 
       {list.map((list) => (
         <div key={list.id} className="flex flex-wrap max-w-sm rounded-lg overflow-hidden shadow-lg m-5 p-5">
