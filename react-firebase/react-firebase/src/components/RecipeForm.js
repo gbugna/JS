@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
 
-const RecipeForm = (props) => {
+const RecipeForm = ({ match }) => {
   const initialStateValues = {
     recipeName: "",
     category: "",
@@ -9,6 +9,17 @@ const RecipeForm = (props) => {
     method: "",
   };
 
+  const [currentId, setCurrentId] = useState(match.params.id);
+
+  const addEditRecipe = async (recipe) => {
+    if (currentId === "" || !currentId) {
+      await db.collection("recipeList").doc().set(recipe);
+      console.log("Receta Guardada");
+    } else {
+      await db.collection("recipeList").doc(currentId).update(recipe);
+      setCurrentId("");
+    }
+  };
   const [values, setValues] = useState(initialStateValues);
 
   const handleInputChange = (e) => {
@@ -18,7 +29,7 @@ const RecipeForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addEditRecipe(values);
+    console.log(addEditRecipe(values));
     setValues({ ...initialStateValues });
   };
 
@@ -28,12 +39,12 @@ const RecipeForm = (props) => {
   };
 
   useEffect(() => {
-    if (props.currentId === "") {
+    if (currentId === "" || !currentId) {
       setValues({ ...initialStateValues });
     } else {
-      getRecipeById(props.currentId);
+      getRecipeById(currentId);
     }
-  }, [props.currentId]);
+  }, [currentId]);
 
   return (
     <div className="flex flex-wrap">
@@ -83,7 +94,7 @@ const RecipeForm = (props) => {
           type="submit"
           className="bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
         >
-          {props.currentId === "" ? "Guardar" : "Editar"}
+          {match.params.id === "" || !match.params.id ? "Guardar" : "Editar"}
         </button>
       </form>
     </div>
