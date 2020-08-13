@@ -4,6 +4,19 @@ import RecipeForm from "./RecipeForm";
 import Salty from "./img/salty.jpg";
 import Sweet from "./img/sweet.jpg";
 import { db } from "../firebase";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import Container from "@material-ui/core/Container";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
 const RecipeList = () => {
   const [list, setList] = useState([]);
@@ -29,25 +42,74 @@ const RecipeList = () => {
     getRecipeList();
   }, []);
 
-  return (
-    <div className="row">
-      {/* <RecipeForm {...{ addEditRecipe, currentId, list }} /> */}
+  const useStyles = makeStyles({
+    root: {
+      maxWidth: 345,
+    },
+    media: {
+      height: 140,
+    },
+  });
 
-      {list.map((list) => (
-        <div key={list.id} className="card">
-          <div className="card-image">
+  const classes = useStyles();
+
+  return list.map((list) => (
+    <div>
+      <Container maxWidth="md">
+        <Grid
+          xs={12}
+          spacing={2}
+          direction="column"
+          justify="flex-end"
+          alignItems="stretch"
+        >
+          <Card key={list.id} className={classes.root} m={2}>
+            <CardActionArea>
+              <CardMedia
+                className={classes.media}
+                image={list.category == "Salado" ? Salty : Sweet}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="h2">
+                  {list.recipeName}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Link to={`/recipe-form/${list.id}`}>
+                <Button
+                  variant="contained"
+                  color="default"
+                  endIcon={<EditIcon />}
+                  onClick={() => setCurrentId(list.id)}
+                >
+                  Editar
+                </Button>
+              </Link>
+              <Button
+                variant="contained"
+                color="secondary"
+                endIcon={<DeleteIcon />}
+                onClick={() => deleteRecipe(list.id)}
+              >
+                Eliminar
+              </Button>
+            </CardActions>
+          </Card>
+        </Grid>
+      </Container>
+      {/* <div className="card-image">
             <img
               className="w-full"
               src={list.category == "Salado" ? Salty : Sweet}
               alt="Sunset in the mountains"
             ></img>
 
-            <span className="card-title">{list.recipeName}</span>
+            <span className="card-title"></span>
             <a className="btn-floating halfway-fab waves-effect waves-light red">
               <i className="material-icons">add</i>
             </a>
           </div>
-
           <div className="card-content">
             <span>#{list.category}</span>
           </div>
@@ -58,11 +120,9 @@ const RecipeList = () => {
           </Link>
           <button className="" onClick={() => deleteRecipe(list.id)}>
             eliminar
-          </button>
-        </div>
-      ))}
+          </button> */}
     </div>
-  );
+  ));
 };
 
 export default RecipeList;

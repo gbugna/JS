@@ -10,7 +10,7 @@ import ButtonNewRecipe from "./components/ButtonNew";
 function App() {
   return (
     <>
-      <div className="col12">
+      <div>
         <BrowserRouter>
           <Link to="/recipe-form">
             <ButtonNewRecipe />
