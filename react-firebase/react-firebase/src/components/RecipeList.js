@@ -1,37 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Router, Route, Switch, Link } from "react-router-dom";
-import RecipeForm from "./RecipeForm";
-import Salty from "./img/salty.jpg";
-import Sweet from "./img/sweet.jpg";
-import { db } from "../firebase";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
-import IconButton from "@material-ui/core/IconButton";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Router, Route, Switch, Link } from 'react-router-dom';
+import RecipeForm from './RecipeForm';
+import Salty from './img/salty.jpg';
+import Sweet from './img/sweet.jpg';
+import { db } from '../firebase';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Container from '@material-ui/core/Container';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 
 const RecipeList = () => {
   const [list, setList] = useState([]);
-  const [currentId, setCurrentId] = useState("");
+  const [currentId, setCurrentId] = useState('');
 
-  const deleteRecipe = async (id) => {
-    if (window.confirm("¿Seguro desea eliminar esta receta?"))
-      await db.collection("recipeList").doc(id).delete();
+  const deleteRecipe = async id => {
+    if (window.confirm('¿Seguro desea eliminar esta receta?'))
+      await db.collection('recipeList').doc(id).delete();
     getRecipeList();
   };
 
   const getRecipeList = async () => {
-    const querySnapshot = await db.collection("recipeList").get();
+    const querySnapshot = await db.collection('recipeList').get();
     const docs = [];
-    querySnapshot.forEach((doc) => {
+    querySnapshot.forEach(doc => {
       docs.push({ ...doc.data(), id: doc.id });
     });
     setList(docs);
@@ -49,11 +48,22 @@ const RecipeList = () => {
     media: {
       height: 140,
     },
+
+    spacing: {
+      margin: 20,
+    },
+
+    alignJustifyContent: {
+      display: 'flex',
+      alignItems: 'end',
+      justifyContent: 'flex-end',
+      backgroundColor: 'lightGrey',
+    },
   });
 
   const classes = useStyles();
 
-  return list.map((list) => (
+  return list.map(list => (
     <div>
       <Container maxWidth="md">
         <Grid
@@ -63,11 +73,11 @@ const RecipeList = () => {
           justify="flex-end"
           alignItems="stretch"
         >
-          <Card key={list.id} className={classes.root} m={2}>
+          <Card key={list.id} className={`${classes.root} ${classes.spacing}`}>
             <CardActionArea>
               <CardMedia
                 className={classes.media}
-                image={list.category == "Salado" ? Salty : Sweet}
+                image={list.category === 'Salado' ? Salty : Sweet}
               />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
@@ -75,52 +85,27 @@ const RecipeList = () => {
                 </Typography>
               </CardContent>
             </CardActionArea>
-            <CardActions>
+            <CardActions className={classes.alignJustifyContent}>
               <Link to={`/recipe-form/${list.id}`}>
-                <Button
+                <IconButton
                   variant="contained"
                   color="default"
-                  endIcon={<EditIcon />}
                   onClick={() => setCurrentId(list.id)}
                 >
-                  Editar
-                </Button>
+                  <EditIcon />
+                </IconButton>
               </Link>
-              <Button
+              <IconButton
                 variant="contained"
                 color="secondary"
-                endIcon={<DeleteIcon />}
                 onClick={() => deleteRecipe(list.id)}
               >
-                Eliminar
-              </Button>
+                <DeleteIcon />
+              </IconButton>
             </CardActions>
           </Card>
         </Grid>
       </Container>
-      {/* <div className="card-image">
-            <img
-              className="w-full"
-              src={list.category == "Salado" ? Salty : Sweet}
-              alt="Sunset in the mountains"
-            ></img>
-
-            <span className="card-title"></span>
-            <a className="btn-floating halfway-fab waves-effect waves-light red">
-              <i className="material-icons">add</i>
-            </a>
-          </div>
-          <div className="card-content">
-            <span>#{list.category}</span>
-          </div>
-          <Link to={`/recipe-form/${list.id}`}>
-            <button className="" onClick={() => setCurrentId(list.id)}>
-              editar
-            </button>
-          </Link>
-          <button className="" onClick={() => deleteRecipe(list.id)}>
-            eliminar
-          </button> */}
     </div>
   ));
 };
